@@ -32,8 +32,8 @@ const PixelCount: React.FC<Props> = ({label, value, onChange}) => {
 export default PixelCount;
 
 function generateCounts(): number[] {
-    const counts = new Array(50 - 10 + 1);
-    for(let i = 10; i <= 50; ++i) {
+    const counts = new Array(80 - 10 + 1);
+    for(let i = 10; i <= 80; ++i) {
         counts[i - 10] = i;
     }
     return counts;

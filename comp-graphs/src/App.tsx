@@ -1,35 +1,30 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
-import Pixel from './types/Pixel';
-import Color from './types/Color';
-import raster from './utility/raster';
-import pixelStyle from './utility/pixelStyle';
-import RasterDisplay from './components/RasterDisplay';
+import { Provider } from 'react-redux';
+import configureStore from './store/configure';
+import RasterDisplay from './components/connected/Display';
 import AppBar from './components/AppBar';
 
-const theme = createMuiTheme();
+const baseTheme = createMuiTheme();
 
-const rows = 16;
-const cols = 30;
-const pixelWidth = 60;
-const pixelHeight = 60;
+const appTheme = createMuiTheme({
+    ...baseTheme,
+    typography: {
+        fontSize: 24
+    }
+});
 
-const pixelMap = {
-    [Pixel.Background]: pixelStyle(Color.Green, pixelWidth, pixelHeight),
-    [Pixel.Fill]: pixelStyle(Color.Blue, pixelWidth, pixelHeight),
-    [Pixel.Contour]: pixelStyle(Color.Red, pixelWidth, pixelHeight)
-};
-
-const rasterDisplay = raster(rows, cols);
+const store = configureStore();
 
 const App: React.FC = () => (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
         <CssBaseline />
         <div style={{width: '100%', height: '100%'}}>
-            <AppBar />
-            <RasterDisplay raster={rasterDisplay} pixelMap={pixelMap} />
+            <Provider store={store}>
+                <AppBar />
+                <RasterDisplay />
+            </Provider>
         </div> 
     </ThemeProvider>
 );
