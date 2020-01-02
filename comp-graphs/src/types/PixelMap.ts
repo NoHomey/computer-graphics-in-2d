@@ -1,6 +1,6 @@
-import Pixel from './Pixel';
+import PixelKind from './PixelKind';
 import PixelStyle from './PixelStyle';
 
-type PixelMap = Record<Pixel, PixelStyle>;
+type PixelMap = Record<PixelKind, PixelStyle>;
 
 export default PixelMap;

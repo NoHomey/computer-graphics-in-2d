@@ -1,10 +1,14 @@
-import { Store, createStore } from 'redux';
-import { State, reducer } from './reducers/main';
+import { createStore, applyMiddleware } from 'redux';
+import { reducer } from './reducers/main';
 import ScreenSize from '../types/ScreenSize';
 import resize from './actions/Resize';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas/root';
 
-function configure(): Store<State> {
-    const store = createStore(reducer);
+function configure() {
+    const sagaMiddleware = createSagaMiddleware();
+
+    const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
     if(typeof window === 'object') {
         window.addEventListener('resize', () => {
@@ -15,6 +19,8 @@ function configure(): Store<State> {
             store.dispatch(resize(size));
         });
     }
+
+    sagaMiddleware.run(rootSaga);
 
     return store;
 }

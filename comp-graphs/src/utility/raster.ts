@@ -1,11 +1,11 @@
 import Raster from '../types/Raster';
-import Pixel from '../types/Pixel';
+import PixelKind from '../types/PixelKind';
 import { List } from 'immutable';
 
 function raster(rows: number, cols: number): Raster {
     return List(
-        Array(rows).fill(Pixel.Background).map(_ =>
-            List(Array(cols).fill(Pixel.Background))
+        Array(rows).fill(PixelKind.Background).map(_ =>
+            List(Array(cols).fill(PixelKind.Background))
         )
     );
 }

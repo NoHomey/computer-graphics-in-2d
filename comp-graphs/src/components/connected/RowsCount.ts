@@ -6,7 +6,7 @@ import { setRasterDisplayRows } from '../../store/actions/SetRasterDisplayRows';
 const RowsCount = connect(
     (state: State) => ({
         label: 'Rows',
-        value: state.rasterDisplay.rows
+        value: state.rasterConfig.rasterDisplay.rows
     }),
     { onChange: setRasterDisplayRows }
 )(PixelCount);

@@ -1,13 +1,13 @@
 import { SetPixelColor, SetPixelColorAction } from '../actions/SetPixelColor';
 import Action from './Action';
 import ColorMap from '../../types/ColorMap';
-import Pixel from '../../types/Pixel';
+import PixelKind from '../../types/PixelKind';
 import Color from '../../types/Color';
 
 const defaultColorMap: ColorMap = {
-    [Pixel.Background]: Color.Green,
-    [Pixel.Fill]: Color.Blue,
-    [Pixel.Contour]: Color.Red
+    [PixelKind.Background]: Color.Green,
+    [PixelKind.Fill]: Color.Blue,
+    [PixelKind.Contour]: Color.Red
 }
 
 function pixelColor(
@@ -24,5 +24,5 @@ function pixelColor(
 export default pixelColor;
 
 function setColor(colorMap: ColorMap, payload: SetPixelColorAction['payload']): ColorMap {
-    return { ...colorMap, [payload.pixel] : payload.color };
+    return { ...colorMap, [payload.pixelKind] : payload.color };
 }

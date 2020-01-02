@@ -1,4 +1,4 @@
-import Pixel from '../../types/Pixel';
+import PixelKind from '../../types/PixelKind';
 import Color from '../../types/Color';
 
 export const SetPixelColor = 'set-pixel-color';
@@ -6,19 +6,19 @@ export const SetPixelColor = 'set-pixel-color';
 export interface SetPixelColorAction {
     type: typeof SetPixelColor,
     payload: {
-        pixel: Pixel,
+        pixelKind: PixelKind,
         color: Color
     }
 };
 
-const setPixelColor: (pixel: Pixel) => (color: Color) => SetPixelColorAction
+const setPixelColor: (pixelKind: PixelKind) => (color: Color) => SetPixelColorAction
 = pixel => color => ({
     type: SetPixelColor,
-    payload: { pixel, color }
+    payload: { pixelKind: pixel, color }
 });
 
-export const setBackgroundColor = setPixelColor(Pixel.Background);
+export const setBackgroundColor = setPixelColor(PixelKind.Background);
 
-export const setFillColor = setPixelColor(Pixel.Fill);
+export const setFillColor = setPixelColor(PixelKind.Fill);
 
-export const setContourColor = setPixelColor(Pixel.Contour);
+export const setContourColor = setPixelColor(PixelKind.Contour);

@@ -5,7 +5,7 @@ import pixelWidth from './pixelWidth';
 import pixelHeight from './pixelHeight';
 
 const pixelMap = createSelector(
-    (state: State) => state.pixelColor,
+    (state: State) => state.rasterConfig.pixelColor,
     pixelWidth,
     pixelHeight,
     createPixelMap

@@ -1,6 +1,6 @@
 import { List } from 'immutable'
-import Pixel from './Pixel';
+import PixelKind from './PixelKind';
 
-type Raster = List<List<Pixel>>;
+type Raster = List<List<PixelKind>>;
 
 export default Raster;

@@ -6,7 +6,7 @@ import { setRasterDisplayCols } from '../../store/actions/SetRasterDisplayCols';
 const ColsCount = connect(
     (state: State) => ({
         label: 'Cols',
-        value: state.rasterDisplay.cols
+        value: state.rasterConfig.rasterDisplay.cols
     }),
     { onChange: setRasterDisplayCols }
 )(PixelCount);
