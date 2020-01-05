@@ -57,7 +57,11 @@ function rasterDisplay(
             return display({ rows, cols });
         }
         case SetKindToPixel: {
-            const { pixel, pixelKind } = (action as SetKindToPixelAction).payload;;
+            const { rows, cols } = state;
+            const { pixel, pixelKind } = (action as SetKindToPixelAction).payload;
+            if(pixel.x < 0 || pixel.x >= cols || pixel.y < 0 || pixel.y >= rows) {
+                return state;
+            }
             return setKindToPixel(state, pixel, pixelKind);
         }
         case AddPixelToSelected: {
