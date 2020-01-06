@@ -7,12 +7,13 @@ import Select from '@material-ui/core/Select';
 interface Props {
     label: string
     value: number,
+    disabled: boolean,
     onChange: (newValue: number) => void
 };
 
 const counts = [1, 2, 3, 4, 5].map((count, index) => <MenuItem value={count} key={index}>{count}</MenuItem>);
 
-const PointerDimention: React.FC<Props> = ({label, value, onChange}) => {
+const PointerDimention: React.FC<Props> = ({label, value, disabled, onChange}) => {
     const labelId = 'pointer-' + label;
 
     return (
@@ -21,6 +22,7 @@ const PointerDimention: React.FC<Props> = ({label, value, onChange}) => {
             <Select
                 labelId={labelId}
                 value={value}
+                disabled={disabled}
                 onChange={handleChange(value, onChange)}
             >
                 {counts}
