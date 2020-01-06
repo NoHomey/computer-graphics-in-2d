@@ -10,6 +10,8 @@ import selectedPixelsSelector from '../selectors/selectedPixels';
 import delaySelector from '../selectors/delay';
 import dashLengthSelector from '../selectors/dashLength';
 import taskSelector from '../selectors/task';
+import pointerWidthSelector from '../selectors/pointerWidth';
+import pointerHeightSelector from '../selectors/pointerHeight';
 
 function* handleDrawAction() {
     const selected: SelectedPixels = yield select(selectedPixelsSelector);
@@ -84,6 +86,9 @@ function* drawTask1(delayMS: number, x1: number, y1: number, x2: number, y2: num
 }
 
 function* drawTask2(delayMS: number, x1: number, y1: number, x2: number, y2: number) {
+    const pointerWidth = yield select(pointerWidthSelector);
+    const pointerHeight = yield select(pointerHeightSelector);
+    const point = circlePixelDrawer(pointerWidth, pointerHeight);
     yield put(setKindToPixel({ x: x1, y: y1 }, PixelKind.Background));
     yield delay(delayMS);
     yield put(setKindToPixel({ x: x2, y: y2 }, PixelKind.Background));
@@ -96,13 +101,13 @@ function* drawTask2(delayMS: number, x1: number, y1: number, x2: number, y2: num
     let x = 0;
     let y = r;
     let d = 2 - 2 * r;
-    yield put(setKindToPixel({ x: xc, y: yc + r }, PixelKind.Contour));
+    yield point(xc, yc + r);
     yield delay(delayMS);
-    yield put(setKindToPixel({ x: xc, y: yc - r }, PixelKind.Contour));
+    yield point(xc, yc - r);
     yield delay(delayMS);
-    yield put(setKindToPixel({ x: xc + r, y: yc }, PixelKind.Contour));
+    yield point(xc + r, yc);
     yield delay(delayMS);
-    yield put(setKindToPixel({ x: xc - r, y: yc }, PixelKind.Contour));
+    yield point(xc - r, yc);
     while(true) {
         if(d > - y) {
             --y;
@@ -115,17 +120,25 @@ function* drawTask2(delayMS: number, x1: number, y1: number, x2: number, y2: num
         if(y < 0) {
             return;
         }
-        yield fourSymetric(delayMS, xc, yc, x, y);
+        yield delay(delayMS);
+        yield point(xc + x, yc + y);
+        yield delay(delayMS);
+        yield point(xc + x, yc - y);
+        yield delay(delayMS);
+        yield point(xc - x, yc + y);
+        yield delay(delayMS);
+        yield point(xc - x, yc - y);
     }
 }
 
-function* fourSymetric(delayMS: number, xc: number, yc: number, x: number, y: number) {
-    yield delay(delayMS);
-    yield put(setKindToPixel({ x: xc + x, y: yc + y }, PixelKind.Contour));
-    yield delay(delayMS);
-    yield put(setKindToPixel({ x: xc - x, y: yc - y }, PixelKind.Contour));
-    yield delay(delayMS);
-    yield put(setKindToPixel({ x: xc - x, y: yc + y }, PixelKind.Contour));
-    yield delay(delayMS);
-    yield put(setKindToPixel({ x: xc + x, y: yc - y }, PixelKind.Contour));
+function circlePixelDrawer(width: number, height: number) {
+    const xc = Math.floor(width / 2);
+    const yc = Math.floor(height / 2);
+    return function* drawPoint(x: number, y: number) {
+        for(let i = 0; i < width; ++i) {
+            for(let j = 0; j < height; ++j) {
+                yield put(setKindToPixel({ x: x - xc + i, y: y - yc + j }, PixelKind.Contour));
+            }
+        }
+    }
 }

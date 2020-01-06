@@ -6,6 +6,8 @@ import delay from './delay';
 import dashLength from './dashLength';
 import selectedPixels from './selectedPixels';
 import config from './config';
+import pointerWidth from './pointerWidth';
+import pointerHeight from './pointerHeight';
 
 const reducerMap = {
     task,
@@ -14,7 +16,9 @@ const reducerMap = {
     delay,
     dashLength,
     selectedPixels,
-    config
+    config,
+    pointerWidth,
+    pointerHeight
 };
 
 export const reducer = combineReducers(reducerMap);

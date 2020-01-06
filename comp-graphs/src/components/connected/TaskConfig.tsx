@@ -5,6 +5,8 @@ import TaskEnum from '../../types/Task';
 import ChangeConfig from './ChangeConfig';
 import Delay from './Delay';
 import DashLength from './DashLength';
+import PointerWidth from './PointerWidth';
+import PointerHeight from './PointerHeight';
 import TaskFeedback from './TaskFeedback';
 import DrawButton from './DrawButton';
 import ClearButton from './ClearButton';
@@ -22,6 +24,8 @@ const TaskConfig: React.FC<Props> = ({task}) => (
         <Grid item><Task/></Grid>
         <Grid item><Delay/></Grid>
         {task === TaskEnum.Task1 ? <Grid item><DashLength/></Grid> : null}
+        {task === TaskEnum.Task2 ? <Grid item><PointerHeight/></Grid> : null}
+        {task === TaskEnum.Task2 ? <Grid item><PointerWidth/></Grid> : null}
         <Grid item><TaskFeedback /></Grid>
         <Grid item><DrawButton /></Grid>
         <Grid item><ClearButton /></Grid>
