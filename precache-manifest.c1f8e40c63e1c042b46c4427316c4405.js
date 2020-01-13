@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f5c35c25cf283227624aec5970dc51ee",
+    "revision": "a2858a8dd23b8f1c4d7d3703f22c22d0",
     "url": "/computer-graphics-in-2d/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/computer-graphics-in-2d/static/js/2.a7e027ef.chunk.js.LICENSE"
   },
   {
-    "revision": "1332f96e5f2174dd8e22",
-    "url": "/computer-graphics-in-2d/static/js/main.12f68968.chunk.js"
+    "revision": "ae1327856a2115c7770c",
+    "url": "/computer-graphics-in-2d/static/js/main.273e6b66.chunk.js"
   },
   {
     "revision": "86a2e0c22b79dda23459",
