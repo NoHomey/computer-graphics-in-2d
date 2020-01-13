@@ -7,7 +7,8 @@ import Color from '../../types/Color';
 const defaultColorMap: ColorMap = {
     [PixelKind.Background]: Color.Green,
     [PixelKind.Fill]: Color.Blue,
-    [PixelKind.Contour]: Color.Red
+    [PixelKind.Contour]: Color.Red,
+    [PixelKind.Contrast]: Color.Gold
 }
 
 function pixelColor(

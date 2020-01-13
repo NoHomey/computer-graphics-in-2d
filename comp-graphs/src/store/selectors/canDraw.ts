@@ -8,9 +8,14 @@ function canDrawTask1or2(selected: SelectedPixels): boolean {
     return selected.size === 2;
 }
 
+function canDrawTask3(selected: SelectedPixels): boolean {
+    return selected.size === 4;
+}
+
 const selector = {
     [Task.Task1]: canDrawTask1or2,
-    [Task.Task2]: canDrawTask1or2
+    [Task.Task2]: canDrawTask1or2,
+    [Task.Task3]: canDrawTask3
 };
 
 const canDraw = createSelector(

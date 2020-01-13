@@ -2,17 +2,17 @@ import { connect } from 'react-redux';
 import ColorPicker from '../ColorPicker';
 import { State } from '../../store/reducers/main';
 import PixelKind from '../../types/PixelKind';
-import { setFillColor } from '../../store/actions/SetPixelColor';
+import { setContrastColor } from '../../store/actions/SetPixelColor';
 
-const FillColor = connect(
+const ContrastColor = connect(
     ({ rasterConfig: { pixelColor } }: State) => ({
-        label: 'Fill',
-        selected: pixelColor[PixelKind.Fill],
+        label: 'Contrast',
+        selected: pixelColor[PixelKind.Contrast],
         removeColor1: pixelColor[PixelKind.Background],
         removeColor2: pixelColor[PixelKind.Contour],
-        removeColor3: pixelColor[PixelKind.Contrast]
+        removeColor3: pixelColor[PixelKind.Fill]
     }),
-    { onChange: setFillColor }
+    { onChange: setContrastColor }
 )(ColorPicker)
 
-export default FillColor;
+export default ContrastColor;

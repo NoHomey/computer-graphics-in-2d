@@ -9,7 +9,8 @@ const BackgroundColor = connect(
         label: 'Background',
         selected: pixelColor[PixelKind.Background],
         removeColor1: pixelColor[PixelKind.Fill],
-        removeColor2: pixelColor[PixelKind.Contour]
+        removeColor2: pixelColor[PixelKind.Contour],
+        removeColor3: pixelColor[PixelKind.Contrast]
     }),
     { onChange: setBackgroundColor }
 )(ColorPicker)

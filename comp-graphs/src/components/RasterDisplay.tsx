@@ -14,14 +14,14 @@ interface Props {
 const RasterDisplay: React.FC<Props> = ({raster, pixelMap, dispatch}) => (
     <Grid container direction='column' justify='center'>
     {
-        raster.map((row, rowIndex) => (
+        raster.reverse().map((row, rowIndex) => (
             <Grid item container direction='row' justify='center' key={rowIndex}>
             {
                 row.map((pixel, colIndex) => (
                     <Grid
                         item
                         style={pixelMap[pixel]}
-                        onClick={() => dispatch(selectPixel({ x: colIndex, y: rowIndex }))}
+                        onClick={() => dispatch(selectPixel({ x: colIndex, y: raster.size - 1 - rowIndex }))}
                         key={(rowIndex + 1) * (colIndex + 1)} />
                 ))
             }

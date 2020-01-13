@@ -12,7 +12,7 @@ interface Props {
 
 const Feedback: React.FC<Props> = ({ feedback, disable }) => {
     return (
-        <Chip variant="outlined" color={disable ? "inherit" : "primary"} label={feedback} />
+        <Chip variant="outlined" color={disable ? "default" : "primary"} label={feedback} />
     );
 };
 

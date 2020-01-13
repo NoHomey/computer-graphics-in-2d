@@ -17,7 +17,7 @@ function selectedPixels(
 ): SelectedPixels {
     switch(action.type) {
         case AddPixelToSelected: {
-            const pixel = (action as AddPixelToSelectedAction).payload;
+            const { pixel } = (action as AddPixelToSelectedAction).payload;
             return state.add(entry(pixel));
         }
         case RemovePixelFromSelected: {

@@ -9,7 +9,8 @@ const ContourColor = connect(
         label: 'Contour',
         selected: pixelColor[PixelKind.Contour],
         removeColor1: pixelColor[PixelKind.Fill],
-        removeColor2: pixelColor[PixelKind.Background]
+        removeColor2: pixelColor[PixelKind.Background],
+        removeColor3: pixelColor[PixelKind.Contrast]
     }),
     { onChange: setContourColor }
 )(ColorPicker)

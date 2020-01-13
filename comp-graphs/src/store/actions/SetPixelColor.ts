@@ -22,3 +22,5 @@ export const setBackgroundColor = setPixelColor(PixelKind.Background);
 export const setFillColor = setPixelColor(PixelKind.Fill);
 
 export const setContourColor = setPixelColor(PixelKind.Contour);
+
+export const setContrastColor = setPixelColor(PixelKind.Contrast);

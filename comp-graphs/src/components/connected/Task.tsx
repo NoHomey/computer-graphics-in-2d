@@ -28,6 +28,7 @@ const TaskSelect: React.FC<Props> = props => {
             >
                 <MenuItem value={Task.Task1}>{"Task 1"}</MenuItem>
                 <MenuItem value={Task.Task2}>{"Task 2"}</MenuItem>
+                <MenuItem value={Task.Task3}>{"Task 3"}</MenuItem>
             </Select>
         </FormControl>
     );

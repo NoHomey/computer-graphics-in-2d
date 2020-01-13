@@ -65,8 +65,8 @@ function rasterDisplay(
             return setKindToPixel(state, pixel, pixelKind);
         }
         case AddPixelToSelected: {
-            const pixel = (action as AddPixelToSelectedAction).payload;
-            return setKindToPixel(state, pixel, PixelKind.Contour);
+            const { pixel, kind } = (action as AddPixelToSelectedAction).payload;
+            return setKindToPixel(state, pixel, kind);
         }
         case RemovePixelFromSelected: {
             const pixel = (action as RemovePixelFromSelectedAction).payload;

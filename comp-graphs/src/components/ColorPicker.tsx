@@ -13,6 +13,7 @@ interface Props {
     selected: Color,
     removeColor1: Color,
     removeColor2: Color,
+    removeColor3: Color,
     onChange: (newColor: Color) => void
 };
 
@@ -37,7 +38,7 @@ const ColorPicker: React.FC<Props> = props => {
                 value={props.selected}
                 onChange={handleChange(props.selected, props.onChange)}
             >
-                {colors.filter(c => c !== props.removeColor1 && c !== props.removeColor2).map((color, index) => (
+                {colors.filter(c => c !== props.removeColor1 && c !== props.removeColor2 && c !== props.removeColor3).map((color, index) => (
                     <MenuItem key={`${index}-${color}`}  value={color} style={{ color }}>{color}</MenuItem>
                 ))}
             </Select>
