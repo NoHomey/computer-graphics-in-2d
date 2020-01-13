@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/computer-graphics-in-2d/static/js/main.5de7b5b4.chunk.js",
-    "main.js.map": "/computer-graphics-in-2d/static/js/main.5de7b5b4.chunk.js.map",
+    "main.js": "/computer-graphics-in-2d/static/js/main.12f68968.chunk.js",
+    "main.js.map": "/computer-graphics-in-2d/static/js/main.12f68968.chunk.js.map",
     "runtime-main.js": "/computer-graphics-in-2d/static/js/runtime-main.65161ca9.js",
     "runtime-main.js.map": "/computer-graphics-in-2d/static/js/runtime-main.65161ca9.js.map",
-    "static/js/2.e2598d2c.chunk.js": "/computer-graphics-in-2d/static/js/2.e2598d2c.chunk.js",
-    "static/js/2.e2598d2c.chunk.js.map": "/computer-graphics-in-2d/static/js/2.e2598d2c.chunk.js.map",
+    "static/js/2.a7e027ef.chunk.js": "/computer-graphics-in-2d/static/js/2.a7e027ef.chunk.js",
+    "static/js/2.a7e027ef.chunk.js.map": "/computer-graphics-in-2d/static/js/2.a7e027ef.chunk.js.map",
     "index.html": "/computer-graphics-in-2d/index.html",
-    "precache-manifest.f81b8bb237b4d89cd173891d608459f8.js": "/computer-graphics-in-2d/precache-manifest.f81b8bb237b4d89cd173891d608459f8.js",
+    "precache-manifest.6158b86fcce6cc77c9af42ef40ebe74c.js": "/computer-graphics-in-2d/precache-manifest.6158b86fcce6cc77c9af42ef40ebe74c.js",
     "service-worker.js": "/computer-graphics-in-2d/service-worker.js",
-    "static/js/2.e2598d2c.chunk.js.LICENSE": "/computer-graphics-in-2d/static/js/2.e2598d2c.chunk.js.LICENSE"
+    "static/js/2.a7e027ef.chunk.js.LICENSE": "/computer-graphics-in-2d/static/js/2.a7e027ef.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.65161ca9.js",
-    "static/js/2.e2598d2c.chunk.js",
-    "static/js/main.5de7b5b4.chunk.js"
+    "static/js/2.a7e027ef.chunk.js",
+    "static/js/main.12f68968.chunk.js"
   ]
 }
