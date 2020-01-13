@@ -236,26 +236,26 @@ function* drawRectangle(xl: number, xr: number, yb: number, yt: number, delayMS:
     }
 }
 
-function clipt(r: number, q: number, t_in: number, t_out: number): { visible: boolean, t_in: number, t_out: number } {
+function clipt(p: number, q: number, t_in: number, t_out: number): { visible: boolean, t_in: number, t_out: number } {
     let visible = true;
-    if(r > 0) {
-        const t = q / r;
-        if(t < t_in) {
-            visible = false;
-        } else {
-            t_out = Math.min(t, t_out);
-        }
-    }
-    if(r < 0) {
-        const t = q / r;
+    if(p < 0) {
+        const t = q / p;
         if(t > t_out) {
             visible = false;
-        } else {
-            t_in = Math.max(t, t_in);
+        } else if(t > t_in) {
+            t_in = t;
         }
-    }
-    if(q < 0) {
-        visible = false;
+    } else {
+        if(p > 0) {
+            const t = q / p;
+            if(t < t_in) {
+                visible = false;
+            } else if(t < t_out) {
+                t_out = t;
+            }
+        } else if(q < 0) {
+         visible = false;
+        }
     }
     return { visible, t_in, t_out };
 }
@@ -265,25 +265,21 @@ function* liangBarsky(delayMS: number, x1: number, y1: number, x2: number, y2: n
     let t_out = 1;
     const dx = x2 - x1;
     const dy = y2 - y1;
-    const c1 = clipt(-dx, xr - x1, t_in, t_out);
-    console.log(c1);
+    const c1 = clipt(-dx, x1 - xl, t_in, t_out);
     if(c1.visible) {
-        const c2 = clipt(dx, x1 - xl, c1.t_in, c1.t_out);
-        console.log(c2);
+        const c2 = clipt(dx, xr - x1, c1.t_in, c1.t_out);
         if(c2.visible) {
-            const c3 = clipt(-dy, yt - y1, c2.t_in, c2.t_out);
-            console.log(c3);
+            const c3 = clipt(-dy, y1 - yb, c2.t_in, c2.t_out);
             if(c3.visible) {
-                const c4 = clipt(dy, y1 - yb, c3.t_in, c3.t_out);
-                console.log(c4);
+                const c4 = clipt(dy, yt - y1, c3.t_in, c3.t_out); 
                 if(c4.visible) {
-                    if(t_in > 0) {
-                        x1 = Math.floor(x1 + c4.t_in * dx);
-                        y1 = Math.floor(y1 + c4.t_in * dy);
-                    }
-                    if(t_out < 1) {
+                    if(c4.t_out < 1) {
                         x2 = Math.floor(x1 + c4.t_out * dx);
                         y2 = Math.floor(y1 + c4.t_out * dy);
+                    }
+                    if(c4.t_in > 0) {
+                        x1 = Math.floor(x1 + c4.t_in * dx);
+                        y1 = Math.floor(y1 + c4.t_in * dy);
                     }
                     yield drawLine({ x: x1, y: y1 }, { x: x2, y: y2 }, delayMS, PixelKind.Contrast);
                 }
